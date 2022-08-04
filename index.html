@@ -12,27 +12,29 @@
     <body>
         <h1 id = "title">Etch A Sketch</h1>
         <div id = "bigCont">
-
+            <div id = "boxCont" class = "boxCont"></div>
         </div>
         
 
         <script>
-            const boxCont = document.createElement('div');
-            bigCont.appendChild(boxCont);
-            boxCont.classList.add('boxCont');
+           //12
             
+            // x * 26
+            const gridDim = prompt("How many squares per line?");
+            const gridSize = gridDim ** 2;
+            const boxNum = gridDim * 26 + "px";
+            document.getElementById("boxCont").style.height = boxNum;
+            document.getElementById("boxCont").style.width = boxNum;
 
-            //const gridSize = prompt("hi");
-            const gridSize = 256
             function createGrid(gridSize) {
-            for (let i = 0; i < gridSize; i++) {
-                const box = document.createElement('div');
-                boxCont.appendChild(box);
-                box.classList.add('box');
-            const boxes = document.querySelectorAll(".box");
-            boxes.forEach(box => box.addEventListener("mouseover", () => {
-            box.classList.add('hover');
-        } ));}
+                for (let i = 0; i < gridSize; i++) {
+                    const box = document.createElement('div');
+                    boxCont.appendChild(box);
+                    box.classList.add('box');
+                const boxes = document.querySelectorAll(".box");
+                boxes.forEach(box => box.addEventListener("mouseover", () => {
+                box.classList.add('hover');
+            } ));}
             
         };
         

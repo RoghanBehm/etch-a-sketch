@@ -5,6 +5,7 @@
     width: 20px;
     background-color: whitesmoke;
     display: inline-block;
+    
 }
 
 
@@ -12,8 +13,8 @@
 
 .boxCont {
     display: inline-block;
-    height: 430px;
-    width: 430px;
+    
+    font-size: 0px;
 
 }
 
