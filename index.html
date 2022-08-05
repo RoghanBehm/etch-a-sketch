@@ -12,6 +12,10 @@
     <body>
         <h1 id = "title">Etch A Sketch</h1>
         <div id = "bigCont">
+            <button id = "a">16</button>
+            <button id = "b">32x32</button>
+            <button id = "c">64x64</button>
+            <button id = "d">Custom</button>
             <div id = "boxCont" class = "boxCont"></div>
         </div>
         
@@ -20,28 +24,64 @@
            //12
             
             // x * 26
-            const gridDim = prompt("How many squares per line?");
-            const gridSize = gridDim ** 2;
-            const boxNum = gridDim * 26 + "px";
-            document.getElementById("boxCont").style.height = boxNum;
-            document.getElementById("boxCont").style.width = boxNum;
+            let gridDim = 16;
+            
+            
 
-            function createGrid(gridSize) {
+  
+            let button = document.querySelector("button");
+            a.addEventListener("click", () => {
+                createGrid(16);
+            });
+            b.addEventListener("click", () => {
+                createGrid(32);
+            });
+            c.addEventListener("click", () => {
+                createGrid(64);
+            });
+            d.addEventListener("click", () => {
+                resetSize();
+            })
+
+            function resetSize(){
+                gridDim = prompt("How many squares per line?");
+                createGrid(gridDim)
+            }
+           
+            function clearGrid(){
+                    const myNode = document.getElementById("boxCont");
+                    while (myNode.firstChild) {
+                        myNode.removeChild(myNode.lastChild);
+                    }
+                }
+                 
+
+            function createGrid(gridDim) {
+                clearGrid();
+                const gridSize = gridDim ** 2;
+                const boxNum = gridDim * 26 + "px";
+                document.getElementById("boxCont").style.height = boxNum;
+                document.getElementById("boxCont").style.width = boxNum;
                 for (let i = 0; i < gridSize; i++) {
                     const box = document.createElement('div');
                     boxCont.appendChild(box);
                     box.classList.add('box');
+                }
                 const boxes = document.querySelectorAll(".box");
-                boxes.forEach(box => box.addEventListener("mouseover", () => {
-                box.classList.add('hover');
-            } ));}
+                boxes.forEach(box => box.addEventListener("mouseover", changeColor)
+             )};
             
-        };
-        
+            function changeColor(e) {
+                const R = Math.floor(Math.random() * 256);
+                const G = Math.floor(Math.random() * 256);
+                const B = Math.floor(Math.random() * 256);
+                e.target.style.backgroundColor = `rgb(${R}, ${G}, ${B})`
+            }
+            
        
-        
             
-        createGrid(gridSize);
+            createGrid(gridDim);
+
 
         
             
