@@ -34,3 +34,24 @@
     
 }
 
+button {
+    height: 40px;
+    min-width: 80px;
+    margin:3px;
+}
+
+.buttonsdiv {
+    display: flex;
+    
+    justify-content: center;
+    
+}
+
+.buttons {
+    display: flex;
+    padding-bottom: 30px;
+    width: 400px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
