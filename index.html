@@ -12,18 +12,33 @@
     <body>
         <h1 id = "title">Etch A Sketch</h1>
         <div id = "bigCont">
-            <button id = "a">16</button>
+            <button id = "a">16x16</button>
             <button id = "b">32x32</button>
             <button id = "c">64x64</button>
             <button id = "d">Custom</button>
+            <button id = "blackBtn">Black</button>
+            <button id = "redBtn">Red</button>
+            <button id = "greenBtn">Green</button>
+            <button id = "blueBtn">Blue</button>
+            <button id = "rainbowBtn">Rainbow Mode</button>
+            <button id = "eraserBtn">Eraser</button>
             <div id = "boxCont" class = "boxCont"></div>
         </div>
         
 
         <script>
-           //12
+           let colourChoice = "red";
+            function setColourMode(mode) {
+                colourChoice = mode;
+            }
+
+            blackBtn.onclick = () => setColourMode('blackMode');
+            redBtn.onclick = () => setColourMode ('redMode');
+            greenBtn.onclick = () => setColourMode ('greenMode');
+            blueBtn.onclick = () => setColourMode ('blueMode')
+            rainbowBtn.onclick = () => setColourMode('rainbowMode');
+            eraserBtn.onclick = () => setColourMode('eraserMode');
             
-            // x * 26
             let gridDim = 16;
             
             
@@ -70,12 +85,27 @@
                 const boxes = document.querySelectorAll(".box");
                 boxes.forEach(box => box.addEventListener("mouseover", changeColor)
              )};
-            
+
+                        
+             
             function changeColor(e) {
-                const R = Math.floor(Math.random() * 256);
-                const G = Math.floor(Math.random() * 256);
-                const B = Math.floor(Math.random() * 256);
-                e.target.style.backgroundColor = `rgb(${R}, ${G}, ${B})`
+                if (colourChoice == "blackMode") {
+                    e.target.style.backgroundColor = "#000000";
+                } else if (colourChoice == "redMode") {
+                    e.target.style.backgroundColor = "#FF0000"
+                } else if (colourChoice == "greenMode") {
+                    e.target.style.backgroundColor = "#008000"
+                } else if (colourChoice == "blueMode") {
+                    e.target.style.backgroundColor = "#0000FF"
+                } else if (colourChoice == "rainbowMode") {
+                    const R = Math.floor(Math.random() * 256);
+                    const G = Math.floor(Math.random() * 256);
+                    const B = Math.floor(Math.random() * 256);
+                    e.target.style.backgroundColor = `rgb(${R}, ${G}, ${B})`;    
+                } else if (colourChoice == "eraserMode") {
+                    e.target.style.backgroundColor = "#fefefe";
+                } 
+                
             }
             
        
