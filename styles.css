@@ -1,3 +1,7 @@
+body {
+    background-color: blanchedalmond;
+}
+
 .box {
     color: black;
     border-style: groove;
@@ -23,6 +27,7 @@
 #bigCont {
     display: flex;
     justify-content: center;
+    padding-bottom: 30px;
 }
 
 #title {
@@ -40,6 +45,9 @@ button {
     height: 40px;
     min-width: 80px;
     margin:3px;
+    font-family: 'Indie Flower';
+    font-size: 16px;
+    background-color: honeydew;
 }
 
 .buttonsdiv {
@@ -57,3 +65,14 @@ button {
     justify-content: center;
 }
 
+h3 {
+    display: flex;
+    width: 400px;
+    justify-content: center;
+    margin: 2px; 
+    font-family: 'Indie Flower';
+}
+
+h1 {
+    font-family: 'League Script', cursive;
+}

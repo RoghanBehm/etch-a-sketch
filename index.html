@@ -8,21 +8,29 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=League+Script&display=swap" rel="stylesheet">
     </head>
     <body>
         <h1 id = "title">Etch A Sketch</h1>
         <div class = "buttonsdiv">
             <div class = "buttons">
+                <h3> Canvas Size</h3>
                 <button id = "a">16x16</button>
                 <button id = "b">32x32</button>
                 <button id = "c">64x64</button>
                 <button id = "d">Custom</button>
+                </h3>
+                <h3>Paint Colour</h3>
                 <button id = "blackBtn">Black</button>
                 <button id = "redBtn">Red</button>
                 <button id = "greenBtn">Green</button>
                 <button id = "blueBtn">Blue</button>
+                
+                <h3> Special Tools</h3>
                 <button id = "rainbowBtn">Rainbow</button>
                 <button id = "eraserBtn">Eraser</button>
+                <button id = "darkenBtn">Pencil</button>
+                <button id = "clearBtn">Clear</button>
             </div>
         </div>
         <div id = "bigCont">          
@@ -43,8 +51,10 @@
             blueBtn.onclick = () => setColourMode ('blueMode')
             rainbowBtn.onclick = () => setColourMode('rainbowMode');
             eraserBtn.onclick = () => setColourMode('eraserMode');
+            darkenBtn.onclick = () => setColourMode('darkenMode');
+            clearBtn.onclick = () => clearButton();
             
-            let gridDim = 16;
+            let gridDim = 32;
             
             
 
@@ -65,9 +75,21 @@
 
             function resetSize(){
                 gridDim = prompt("How many squares per line?");
+                if (gridDim >= 2 && gridDim <= 100) {
+                    createGrid(gridDim)
+                } else {
+                    alert("Invalid selection");
+                    resetSize();
+                }
                 createGrid(gridDim)
             }
-           
+
+            function clearButton() {
+                const boxes = document.querySelectorAll(".box");
+                boxes.forEach(box => box.style.backgroundColor = '#F5F5F5')
+               
+            }
+            
             function clearGrid(){
                     const myNode = document.getElementById("boxCont");
                     while (myNode.firstChild) {
@@ -108,15 +130,20 @@
                     const B = Math.floor(Math.random() * 256);
                     e.target.style.backgroundColor = `rgb(${R}, ${G}, ${B})`;    
                 } else if (colourChoice == "eraserMode") {
-                    e.target.style.backgroundColor = "#fefefe";
+                    e.target.style.backgroundColor = "#F5F5F5";
+                } else if (colourChoice == "darkenMode") {
+                    e.target.style.backgroundColor = "#000000";
+                    e.target.style.opacity -= '-0.1';
                 } 
+                 else {
+                    e.target.style.backgroundColor = "#000000";
+                }
                 
             }
             
-       
             
             createGrid(gridDim);
-
+            
 
         
             
