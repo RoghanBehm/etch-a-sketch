@@ -39,7 +39,7 @@
         </div>
         
 
-        <script>
+        <script type="text/javascript">
            let colourChoice = "red";
             function setColourMode(mode) {
                 colourChoice = mode;
@@ -110,6 +110,7 @@
                     box.classList.add('box');
                 }
                 const boxes = document.querySelectorAll(".box");
+                
                 boxes.forEach(box => box.addEventListener("mouseover", changeColor)
              )};
 
